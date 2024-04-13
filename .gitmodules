@@ -1,0 +1,7 @@
+[submodule "libs/arcadeLdtk"]
+	path = libs/arcadeLdtk
+	url = git@github.com:vanicat/arcadeLdtk.git
+	branch = main
+[submodule "libs/arcade"]
+	path = libs/arcade
+	url = git@github.com:pythonarcade/arcade.git
