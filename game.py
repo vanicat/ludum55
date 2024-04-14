@@ -74,7 +74,7 @@ class Game(arcade.View):
 
     def start_level(self, start_level:arcadeLDtk.Level, pos:tuple[float, float]):
         self.cur_level = start_level
-        self.cur_scene = self.cur_level.make_scene(regenerate=True)
+        self.cur_scene = self.cur_level.make_scene()
         arcade.set_background_color(self.cur_level.bg_color)
         self.cur_scene.add_sprite("Player", self.player)
         self.player.center_x = pos[0]
