@@ -1,6 +1,9 @@
+import math
+
 ZOOM = 2
 WIDTH = 256
 SCREEN_WIDTH = WIDTH * ZOOM
 HEIGHT = 256
 SCREEN_HEIGHT = HEIGHT * ZOOM
 SCREEN_TITLE = "Summoning"
+INV_SQRT2 = 1/math.sqrt(2)

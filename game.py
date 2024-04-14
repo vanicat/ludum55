@@ -13,24 +13,30 @@ class Player(arcade.Sprite):
         super().__init__(game.world.defs.tilesets["Player"].set[0])
 
     def on_update(self, delta_time: float = 1 / 60) -> None:
-        self.velocity = (0, 0)
-        if arcade.key.W in self.game.keys:
-            self.velocity = (0, 1)
-        if arcade.key.A in self.game.keys:
-            self.velocity = (-1, 0)
-        if arcade.key.S in self.game.keys:
-            self.velocity = (0, -1)
-        if arcade.key.D in self.game.keys:
-            self.velocity = (1, 0)
+        self.change_x = 0
+        self.change_y = 0
+        if arcade.key.W in self.game.keys or arcade.key.UP in self.game.keys:
+            self.change_y = 1
+        if arcade.key.A in self.game.keys or arcade.key.LEFT in self.game.keys:
+            self.change_x = -1
+        if arcade.key.S in self.game.keys or arcade.key.DOWN in self.game.keys:
+            self.change_y = -1
+        if arcade.key.D in self.game.keys or arcade.key.RIGHT in self.game.keys:
+            self.change_x = 1
+
+        if self.change_x and self.change_y:
+            self.change_y *= INV_SQRT2
+            self.change_x *= INV_SQRT2
 
         self.center_x += self.change_x
-        self.center_y += self.change_y
-
         if self.collides_with_list(self.game.cur_scene["Wall"]):
             self.center_x -= self.change_x
+
+        self.center_y += self.change_y        
+        if self.collides_with_list(self.game.cur_scene["Wall"]):
             self.center_y -= self.change_y
 
-            assert not(self.collides_with_list(self.game.cur_scene["Wall"]))
+        assert not(self.collides_with_list(self.game.cur_scene["Wall"]))
     
 
         return super().on_update(delta_time)
