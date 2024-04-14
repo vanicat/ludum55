@@ -61,6 +61,7 @@ class Game(arcade.View):
         self.camera = arcade.camera.Camera2D()
 
         self.camera.zoom = ZOOM
+        self.keys = set()
 
         self.start_level(start_level, start.px)
 
@@ -72,7 +73,6 @@ class Game(arcade.View):
 
 
     def start_level(self, start_level:arcadeLDtk.Level, pos:tuple[float, float]):
-        self.keys = set()
         self.cur_level = start_level
         self.cur_scene = self.cur_level.make_scene(regenerate=True)
         arcade.set_background_color(self.cur_level.bg_color)
@@ -108,5 +108,6 @@ class Game(arcade.View):
         return super().on_key_press(symbol, modifiers)
     
     def on_key_release(self, symbol: int, _modifiers: int):
-        self.keys.remove(symbol)
+        if symbol in self.keys:
+            self.keys.remove(symbol)
         return super().on_key_release(symbol, _modifiers)
