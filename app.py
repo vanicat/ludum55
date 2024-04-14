@@ -57,12 +57,12 @@ You are on your own, no help yet
         self.manager.add(self.v_box)
         self.levels = read_LDtk("assets/maps/world.ldtk")
 
-    def start_game(self, event):
+    def start_game(self, event=None):
         g = Game(self.window, self.levels)
         self.window.show_view(g)
 
 
-    def quit(self, event):
+    def quit(self, event=None):
         arcade.exit()
 
     def on_hide_view(self):
@@ -80,6 +80,12 @@ You are on your own, no help yet
         self.manager.draw()
         self.text.draw()
 
+    def on_key_press(self, symbol: int, modifiers: int):
+        if symbol == arcade.key.ENTER:
+            self.start_game()
+        if symbol == arcade.key.ESCAPE:
+            self.quit()
+        return super().on_key_press(symbol, modifiers)
 
 def main():
     """ Main function """
