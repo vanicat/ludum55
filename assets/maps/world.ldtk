@@ -11,7 +11,7 @@
 	"iid": "b55f91a0-d7b0-11ee-a12c-9b5199bba74e",
 	"jsonVersion": "1.5.3",
 	"appBuildId": 473703,
-	"nextUid": 68,
+	"nextUid": 72,
 	"identifierStyle": "Capitalize",
 	"toc": [{
 		"identifier": "Start",
@@ -19,9 +19,9 @@
 		"instancesData": [{ "iids": {
 			"worldIid": "b55fb8b0-d7b0-11ee-a12c-4b9eb697a9a1",
 			"levelIid": "b55fb8b1-d7b0-11ee-a12c-272ed91ea97d",
-			"layerIid": "4e28dea0-d7b0-11ee-a782-95d15167b2a0",
+			"layerIid": "1928d0d0-d7b0-11ee-ae5f-f196c4f9e00a",
 			"entityIid": "5bfd0fb0-d7b0-11ee-a782-0110831360f9"
-		}, "worldX": 56, "worldY": 72, "widPx": 16, "heiPx": 16, "fields" : {} }]
+		}, "worldX": 104, "worldY": 72, "widPx": 16, "heiPx": 16, "fields" : {} }]
 	}],
 	"worldLayout": "Free",
 	"worldGridWidth": 256,
@@ -1000,9 +1000,44 @@
 		},
 		{
 			"__type": "Entities",
-			"identifier": "GamesEntities",
+			"identifier": "Invocations",
 			"type": "Entities",
 			"uid": 59,
+			"doc": null,
+			"uiColor": null,
+			"gridSize": 16,
+			"guideGridWid": 0,
+			"guideGridHei": 0,
+			"displayOpacity": 1,
+			"inactiveOpacity": 0.6,
+			"hideInList": false,
+			"hideFieldsWhenInactive": true,
+			"canSelectWhenInactive": true,
+			"renderInWorldView": true,
+			"pxOffsetX": 0,
+			"pxOffsetY": 0,
+			"parallaxFactorX": 0,
+			"parallaxFactorY": 0,
+			"parallaxScaling": true,
+			"requiredTags": [],
+			"excludedTags": [],
+			"autoTilesKilledByOtherLayerUid": null,
+			"uiFilterTags": [],
+			"useAsyncRender": false,
+			"intGridValues": [],
+			"intGridValuesGroups": [],
+			"autoRuleGroups": [],
+			"autoSourceLayerDefUid": null,
+			"tilesetDefUid": null,
+			"tilePivotX": 0,
+			"tilePivotY": 0,
+			"biomeFieldUid": null
+		},
+		{
+			"__type": "Entities",
+			"identifier": "Start",
+			"type": "Entities",
+			"uid": 71,
 			"doc": null,
 			"uiColor": null,
 			"gridSize": 16,
@@ -1102,7 +1137,82 @@
 			"limitBehavior": "MoveLastOne",
 			"pivotX": 0.5,
 			"pivotY": 0.5,
-			"fieldDefs": []
+			"fieldDefs": [
+				{
+					"identifier": "Patrol",
+					"doc": null,
+					"__type": "Array<Point>",
+					"uid": 68,
+					"type": "F_Point",
+					"isArray": true,
+					"canBeNull": true,
+					"arrayMinLength": 2,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "PointPathLoop",
+					"editorDisplayScale": 1,
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "CurvedArrow",
+					"editorDisplayColor": null,
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"exportToToc": false,
+					"searchable": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefsEntityUid": null,
+					"allowedRefTags": [],
+					"tilesetUid": null
+				},
+				{
+					"identifier": "Specie",
+					"doc": null,
+					"__type": "LocalEnum.Species",
+					"uid": 70,
+					"type": "F_Enum(69)",
+					"isArray": false,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "Hidden",
+					"editorDisplayScale": 1,
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "StraightArrow",
+					"editorDisplayColor": null,
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"exportToToc": false,
+					"searchable": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefsEntityUid": null,
+					"allowedRefTags": [],
+					"tilesetUid": null
+				}
+			]
 		}
 	], "tilesets": [
 		{
@@ -1148,24 +1258,27 @@
 		},
 		{
 			"__cWid": 8,
-			"__cHei": 1,
+			"__cHei": 2,
 			"identifier": "Invocation",
 			"uid": 60,
 			"relPath": "../tiles/tiles1.png",
 			"embedAtlas": null,
 			"pxWid": 128,
-			"pxHei": 16,
+			"pxHei": 32,
 			"tileGridSize": 16,
 			"spacing": 0,
 			"padding": 0,
 			"tags": [],
 			"tagsSourceEnumUid": null,
 			"enumTags": [],
-			"customData": [],
+			"customData": [ { "tileId": 10, "data": "{\n  \"name\": \"Fire\"\n}" }, { "tileId": 11, "data": "{\n  \"name\": \"Fire\"\n}" } ],
 			"savedSelections": [],
-			"cachedPixelData": { "opaqueTiles": "00000000", "averageColors": "60006b236ed600000000000000000000" }
+			"cachedPixelData": { "opaqueTiles": "0000000000000000", "averageColors": "60006b236ed620002000200020003b2332230000000000000000000000000000" }
 		}
-	], "enums": [{ "identifier": "Enum", "uid": 2, "values": [ { "id": "Floor", "tileRect": { "tilesetUid": 1, "x": 0, "y": 0, "w": 16, "h": 16 }, "color": 12470831 }, { "id": "Wall", "tileRect": { "tilesetUid": 1, "x": 16, "y": 16, "w": 16, "h": 16 }, "color": 14120515 } ], "iconTilesetUid": 1, "externalRelPath": null, "externalFileChecksum": null, "tags": [] }], "externalEnums": [], "levelFields": [] },
+	], "enums": [
+		{ "identifier": "Enum", "uid": 2, "values": [ { "id": "Floor", "tileRect": { "tilesetUid": 1, "x": 0, "y": 0, "w": 16, "h": 16 }, "color": 12470831 }, { "id": "Wall", "tileRect": { "tilesetUid": 1, "x": 16, "y": 16, "w": 16, "h": 16 }, "color": 14120515 } ], "iconTilesetUid": 1, "externalRelPath": null, "externalFileChecksum": null, "tags": [] },
+		{ "identifier": "Species", "uid": 69, "values": [ { "id": "Fire", "tileRect": { "tilesetUid": 60, "x": 112, "y": 0, "w": 16, "h": 16 }, "color": 12470831 }, { "id": "Earth", "tileRect": { "tilesetUid": 60, "x": 0, "y": 16, "w": 16, "h": 16 }, "color": 14120515 } ], "iconTilesetUid": 60, "externalRelPath": null, "externalFileChecksum": null, "tags": [] }
+	], "externalEnums": [], "levelFields": [] },
 	"levels": [
 		{
 			"identifier": "Level_0",
@@ -1361,7 +1474,7 @@
 					"entityInstances": []
 				},
 				{
-					"__identifier": "GamesEntities",
+					"__identifier": "Invocations",
 					"__type": "Entities",
 					"__cWid": 27,
 					"__cHei": 16,
@@ -1396,13 +1509,51 @@
 							"height": 16,
 							"defUid": 61,
 							"px": [392,200],
-							"fieldInstances": [],
+							"fieldInstances": [
+								{ "__identifier": "Patrol", "__type": "Array<Point>", "__value": [
+									{ "cx": 24, "cy": 9 },
+									{ "cx": 22, "cy": 4 },
+									{ "cx": 17, "cy": 4 },
+									{ "cx": 17, "cy": 9 },
+									{ "cx": 21, "cy": 12 },
+									{ "cx": 23, "cy": 12 }
+								], "__tile": null, "defUid": 68, "realEditorValues": [
+									{
+										"id": "V_String",
+										"params": ["24,9"]
+									},
+									{
+										"id": "V_String",
+										"params": ["22,4"]
+									},
+									{
+										"id": "V_String",
+										"params": ["17,4"]
+									},
+									{
+										"id": "V_String",
+										"params": ["17,9"]
+									},
+									{
+										"id": "V_String",
+										"params": ["21,12"]
+									},
+									{
+										"id": "V_String",
+										"params": ["23,12"]
+									}
+								] },
+								{ "__identifier": "Specie", "__type": "LocalEnum.Species", "__value": "Earth", "__tile": null, "defUid": 70, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["Earth"]
+								}] }
+							],
 							"__worldX": 392,
 							"__worldY": 232
 						},
 						{
 							"__identifier": "Invocation",
-							"__grid": [2,13],
+							"__grid": [5,13],
 							"__pivot": [0.5,0.5],
 							"__tags": [],
 							"__tile": { "tilesetUid": 60, "x": 0, "y": 0, "w": 16, "h": 16 },
@@ -1411,14 +1562,78 @@
 							"width": 16,
 							"height": 16,
 							"defUid": 61,
-							"px": [40,216],
-							"fieldInstances": [],
-							"__worldX": 40,
+							"px": [88,216],
+							"fieldInstances": [
+								{ "__identifier": "Patrol", "__type": "Array<Point>", "__value": [
+									{ "cx": 8, "cy": 12 },
+									{ "cx": 12, "cy": 10 },
+									{ "cx": 10, "cy": 7 },
+									{ "cx": 6, "cy": 8 },
+									{ "cx": 4, "cy": 9 },
+									{ "cx": 5, "cy": 12 }
+								], "__tile": null, "defUid": 68, "realEditorValues": [
+									{
+										"id": "V_String",
+										"params": ["8,12"]
+									},
+									{
+										"id": "V_String",
+										"params": ["12,10"]
+									},
+									{
+										"id": "V_String",
+										"params": ["10,7"]
+									},
+									{
+										"id": "V_String",
+										"params": ["6,8"]
+									},
+									{
+										"id": "V_String",
+										"params": ["4,9"]
+									},
+									{
+										"id": "V_String",
+										"params": ["5,12"]
+									}
+								] },
+								{ "__identifier": "Specie", "__type": "LocalEnum.Species", "__value": "Fire", "__tile": null, "defUid": 70, "realEditorValues": [{
+									"id": "V_String",
+									"params": ["Fire"]
+								}] }
+							],
+							"__worldX": 88,
 							"__worldY": 248
-						},
+						}
+					]
+				},
+				{
+					"__identifier": "Start",
+					"__type": "Entities",
+					"__cWid": 27,
+					"__cHei": 16,
+					"__gridSize": 16,
+					"__opacity": 1,
+					"__pxTotalOffsetX": 0,
+					"__pxTotalOffsetY": 0,
+					"__tilesetDefUid": null,
+					"__tilesetRelPath": null,
+					"iid": "1928d0d0-d7b0-11ee-ae5f-f196c4f9e00a",
+					"levelId": 0,
+					"layerDefUid": 71,
+					"pxOffsetX": 0,
+					"pxOffsetY": 0,
+					"visible": true,
+					"optionalRules": [],
+					"intGridCsv": [],
+					"autoLayerTiles": [],
+					"seed": 7592866,
+					"overrideTilesetUid": null,
+					"gridTiles": [],
+					"entityInstances": [
 						{
 							"__identifier": "Start",
-							"__grid": [3,2],
+							"__grid": [6,2],
 							"__pivot": [0.5,0.5],
 							"__tags": [],
 							"__tile": { "tilesetUid": 58, "x": 0, "y": 0, "w": 16, "h": 16 },
@@ -1427,9 +1642,9 @@
 							"width": 16,
 							"height": 16,
 							"defUid": 57,
-							"px": [56,40],
+							"px": [104,40],
 							"fieldInstances": [],
-							"__worldX": 56,
+							"__worldX": 104,
 							"__worldY": 72
 						}
 					]
@@ -1676,7 +1891,7 @@
 					"entityInstances": []
 				},
 				{
-					"__identifier": "GamesEntities",
+					"__identifier": "Invocations",
 					"__type": "Entities",
 					"__cWid": 32,
 					"__cHei": 17,
@@ -1696,6 +1911,31 @@
 					"intGridCsv": [],
 					"autoLayerTiles": [],
 					"seed": 5278114,
+					"overrideTilesetUid": null,
+					"gridTiles": [],
+					"entityInstances": []
+				},
+				{
+					"__identifier": "Start",
+					"__type": "Entities",
+					"__cWid": 32,
+					"__cHei": 17,
+					"__gridSize": 16,
+					"__opacity": 1,
+					"__pxTotalOffsetX": 0,
+					"__pxTotalOffsetY": 0,
+					"__tilesetDefUid": null,
+					"__tilesetRelPath": null,
+					"iid": "1928f7e0-d7b0-11ee-ae5f-db0c96650b3f",
+					"levelId": 56,
+					"layerDefUid": 71,
+					"pxOffsetX": 0,
+					"pxOffsetY": 0,
+					"visible": true,
+					"optionalRules": [],
+					"intGridCsv": [],
+					"autoLayerTiles": [],
+					"seed": 4267698,
 					"overrideTilesetUid": null,
 					"gridTiles": [],
 					"entityInstances": []
@@ -1902,7 +2142,7 @@
 					"entityInstances": []
 				},
 				{
-					"__identifier": "GamesEntities",
+					"__identifier": "Invocations",
 					"__type": "Entities",
 					"__cWid": 25,
 					"__cHei": 18,
@@ -1922,6 +2162,31 @@
 					"intGridCsv": [],
 					"autoLayerTiles": [],
 					"seed": 7810252,
+					"overrideTilesetUid": null,
+					"gridTiles": [],
+					"entityInstances": []
+				},
+				{
+					"__identifier": "Start",
+					"__type": "Entities",
+					"__cWid": 25,
+					"__cHei": 18,
+					"__gridSize": 16,
+					"__opacity": 1,
+					"__pxTotalOffsetX": 0,
+					"__pxTotalOffsetY": 0,
+					"__tilesetDefUid": null,
+					"__tilesetRelPath": null,
+					"iid": "1928f7e1-d7b0-11ee-ae5f-9577ca5883db",
+					"levelId": 64,
+					"layerDefUid": 71,
+					"pxOffsetX": 0,
+					"pxOffsetY": 0,
+					"visible": true,
+					"optionalRules": [],
+					"intGridCsv": [],
+					"autoLayerTiles": [],
+					"seed": 4354212,
 					"overrideTilesetUid": null,
 					"gridTiles": [],
 					"entityInstances": []
@@ -2243,7 +2508,7 @@
 					"entityInstances": []
 				},
 				{
-					"__identifier": "GamesEntities",
+					"__identifier": "Invocations",
 					"__type": "Entities",
 					"__cWid": 28,
 					"__cHei": 17,
@@ -2263,6 +2528,31 @@
 					"intGridCsv": [],
 					"autoLayerTiles": [],
 					"seed": 5648152,
+					"overrideTilesetUid": null,
+					"gridTiles": [],
+					"entityInstances": []
+				},
+				{
+					"__identifier": "Start",
+					"__type": "Entities",
+					"__cWid": 28,
+					"__cHei": 17,
+					"__gridSize": 16,
+					"__opacity": 1,
+					"__pxTotalOffsetX": 0,
+					"__pxTotalOffsetY": 0,
+					"__tilesetDefUid": null,
+					"__tilesetRelPath": null,
+					"iid": "1928f7e2-d7b0-11ee-ae5f-b72abb16a179",
+					"levelId": 65,
+					"layerDefUid": 71,
+					"pxOffsetX": 0,
+					"pxOffsetY": 0,
+					"visible": true,
+					"optionalRules": [],
+					"intGridCsv": [],
+					"autoLayerTiles": [],
+					"seed": 3592774,
 					"overrideTilesetUid": null,
 					"gridTiles": [],
 					"entityInstances": []
@@ -2414,7 +2704,7 @@
 					"entityInstances": []
 				},
 				{
-					"__identifier": "GamesEntities",
+					"__identifier": "Invocations",
 					"__type": "Entities",
 					"__cWid": 19,
 					"__cHei": 16,
@@ -2434,6 +2724,31 @@
 					"intGridCsv": [],
 					"autoLayerTiles": [],
 					"seed": 589351,
+					"overrideTilesetUid": null,
+					"gridTiles": [],
+					"entityInstances": []
+				},
+				{
+					"__identifier": "Start",
+					"__type": "Entities",
+					"__cWid": 19,
+					"__cHei": 16,
+					"__gridSize": 16,
+					"__opacity": 1,
+					"__pxTotalOffsetX": 0,
+					"__pxTotalOffsetY": 0,
+					"__tilesetDefUid": null,
+					"__tilesetRelPath": null,
+					"iid": "19291ef0-d7b0-11ee-ae5f-2799250af5cd",
+					"levelId": 66,
+					"layerDefUid": 71,
+					"pxOffsetX": 0,
+					"pxOffsetY": 0,
+					"visible": true,
+					"optionalRules": [],
+					"intGridCsv": [],
+					"autoLayerTiles": [],
+					"seed": 9491690,
 					"overrideTilesetUid": null,
 					"gridTiles": [],
 					"entityInstances": []
@@ -2676,7 +2991,7 @@
 					"entityInstances": []
 				},
 				{
-					"__identifier": "GamesEntities",
+					"__identifier": "Invocations",
 					"__type": "Entities",
 					"__cWid": 16,
 					"__cHei": 16,
@@ -2696,6 +3011,31 @@
 					"intGridCsv": [],
 					"autoLayerTiles": [],
 					"seed": 6366131,
+					"overrideTilesetUid": null,
+					"gridTiles": [],
+					"entityInstances": []
+				},
+				{
+					"__identifier": "Start",
+					"__type": "Entities",
+					"__cWid": 16,
+					"__cHei": 16,
+					"__gridSize": 16,
+					"__opacity": 1,
+					"__pxTotalOffsetX": 0,
+					"__pxTotalOffsetY": 0,
+					"__tilesetDefUid": null,
+					"__tilesetRelPath": null,
+					"iid": "19291ef1-d7b0-11ee-ae5f-1b98a62cfeca",
+					"levelId": 67,
+					"layerDefUid": 71,
+					"pxOffsetX": 0,
+					"pxOffsetY": 0,
+					"visible": true,
+					"optionalRules": [],
+					"intGridCsv": [],
+					"autoLayerTiles": [],
+					"seed": 4929723,
 					"overrideTilesetUid": null,
 					"gridTiles": [],
 					"entityInstances": []
