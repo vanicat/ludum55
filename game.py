@@ -92,6 +92,14 @@ class Game(arcade.View):
     
     def on_update(self, delta_time: float):
         self.cur_scene.on_update(delta_time)
+        if not self.cur_level.coord_inside(self.player.center_x, self.player.center_y):
+            x, y = self.cur_level.to_world_coord(self.player.center_x, self.player.center_y)
+            levels = self.world.get_levels_at_point(x, y)
+            if len(levels) != 1:
+                raise NotImplemented("level not implemeted here: there be dragon") 
+            level = levels[0]
+            self.start_level(level, level.from_world_coord(x, y))
+            
         self.camera_to_player()
         return super().on_update(delta_time)
 
