@@ -96,7 +96,7 @@ class Game(arcade.View):
             x, y = self.cur_level.to_world_coord(self.player.center_x, self.player.center_y)
             levels = self.world.get_levels_at_point(x, y)
             if len(levels) != 1:
-                raise NotImplemented("level not implemeted here: there be dragon") 
+                raise NotImplementedError("level not implemeted here: there be dragon") 
             level = levels[0]
             self.start_level(level, level.from_world_coord(x, y))
             
