@@ -75,6 +75,11 @@ class Game(arcade.View):
     def start_level(self, start_level:arcadeLDtk.Level, pos:tuple[float, float]):
         self.cur_level = start_level
         self.cur_scene = self.cur_level.make_scene()
+        self.cur_scene.add_sprite_list("Invocation")
+        self.cur_scene.add_sprite_list("Monster")
+        for entity in self.cur_level.layers_by_identifier["Invocations"].entity_list:
+            self.cur_scene.add_sprite("Invocation", arcade.Sprite(entity.def_.tile, center_x=entity.px[0], center_y=entity.px[1]))
+            print(entity.px, self.cur_scene["Invocation"], len(self.cur_scene["Invocation"]))
         arcade.set_background_color(self.cur_level.bg_color)
         self.cur_scene.add_sprite("Player", self.player)
         self.player.center_x = pos[0]
@@ -86,15 +91,14 @@ class Game(arcade.View):
     def on_draw(self):
         self.clear()
         self.camera.use()
-
         self.cur_scene.draw()
         return super().on_draw()
     
     def on_update(self, delta_time: float):
         self.cur_scene.on_update(delta_time)
-        if not self.cur_level.coord_inside(self.player.center_x, self.player.center_y):
+        if not self.cur_level.contains_coord(self.player.center_x, self.player.center_y):
             x, y = self.cur_level.to_world_coord(self.player.center_x, self.player.center_y)
-            levels = self.world.get_levels_at_point(x, y)
+            levels = self.world.get_levels_at_point(x, y)   
             if len(levels) != 1:
                 raise NotImplementedError("level not implemeted here: there be dragon") 
             level = levels[0]
