@@ -11,7 +11,7 @@
 	"iid": "b55f91a0-d7b0-11ee-a12c-9b5199bba74e",
 	"jsonVersion": "1.5.3",
 	"appBuildId": 473703,
-	"nextUid": 72,
+	"nextUid": 77,
 	"identifierStyle": "Capitalize",
 	"toc": [{
 		"identifier": "Start",
@@ -21,15 +21,15 @@
 			"levelIid": "b55fb8b1-d7b0-11ee-a12c-272ed91ea97d",
 			"layerIid": "1928d0d0-d7b0-11ee-ae5f-f196c4f9e00a",
 			"entityIid": "5bfd0fb0-d7b0-11ee-a782-0110831360f9"
-		}, "worldX": 104, "worldY": 72, "widPx": 16, "heiPx": 16, "fields" : {} }]
+		}, "worldX": 88, "worldY": 72, "widPx": 16, "heiPx": 16, "fields" : {} }]
 	}],
 	"worldLayout": "Free",
 	"worldGridWidth": 256,
 	"worldGridHeight": 256,
 	"defaultLevelWidth": 256,
 	"defaultLevelHeight": 256,
-	"defaultPivotX": 0,
-	"defaultPivotY": 0,
+	"defaultPivotX": 0.5,
+	"defaultPivotY": 0.5,
 	"defaultGridSize": 16,
 	"defaultEntityWidth": 16,
 	"defaultEntityHeight": 16,
@@ -1211,6 +1211,43 @@
 					"allowedRefsEntityUid": null,
 					"allowedRefTags": [],
 					"tilesetUid": null
+				},
+				{
+					"identifier": "Repeat",
+					"doc": null,
+					"__type": "Float",
+					"uid": 72,
+					"type": "F_Float",
+					"isArray": false,
+					"canBeNull": true,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "NameAndValue",
+					"editorDisplayScale": 1,
+					"editorDisplayPos": "Beneath",
+					"editorLinkStyle": "StraightArrow",
+					"editorDisplayColor": null,
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"exportToToc": false,
+					"searchable": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": { "id": "V_Float", "params": [30] },
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySame",
+					"allowedRefsEntityUid": null,
+					"allowedRefTags": [],
+					"tilesetUid": null
 				}
 			]
 		}
@@ -1269,9 +1306,9 @@
 			"spacing": 0,
 			"padding": 0,
 			"tags": [],
-			"tagsSourceEnumUid": null,
-			"enumTags": [],
-			"customData": [ { "tileId": 10, "data": "{\n  \"name\": \"Fire\"\n}" }, { "tileId": 11, "data": "{\n  \"name\": \"Fire\"\n}" } ],
+			"tagsSourceEnumUid": 69,
+			"enumTags": [ { "enumValueId": "Fire", "tileIds": [7] }, { "enumValueId": "Earth", "tileIds": [8] } ],
+			"customData": [],
 			"savedSelections": [],
 			"cachedPixelData": { "opaqueTiles": "0000000000000000", "averageColors": "60006b236ed620002000200020003b2332230000000000000000000000000000" }
 		}
@@ -1546,7 +1583,8 @@
 								{ "__identifier": "Specie", "__type": "LocalEnum.Species", "__value": "Earth", "__tile": null, "defUid": 70, "realEditorValues": [{
 									"id": "V_String",
 									"params": ["Earth"]
-								}] }
+								}] },
+								{ "__identifier": "Repeat", "__type": "Float", "__value": 20, "__tile": null, "defUid": 72, "realEditorValues": [{ "id": "V_Float", "params": [20] }] }
 							],
 							"__worldX": 392,
 							"__worldY": 232
@@ -1565,8 +1603,8 @@
 							"px": [88,216],
 							"fieldInstances": [
 								{ "__identifier": "Patrol", "__type": "Array<Point>", "__value": [
-									{ "cx": 8, "cy": 12 },
-									{ "cx": 12, "cy": 10 },
+									{ "cx": 10, "cy": 12 },
+									{ "cx": 11, "cy": 10 },
 									{ "cx": 10, "cy": 7 },
 									{ "cx": 6, "cy": 8 },
 									{ "cx": 4, "cy": 9 },
@@ -1574,11 +1612,11 @@
 								], "__tile": null, "defUid": 68, "realEditorValues": [
 									{
 										"id": "V_String",
-										"params": ["8,12"]
+										"params": ["10,12"]
 									},
 									{
 										"id": "V_String",
-										"params": ["12,10"]
+										"params": ["11,10"]
 									},
 									{
 										"id": "V_String",
@@ -1600,7 +1638,8 @@
 								{ "__identifier": "Specie", "__type": "LocalEnum.Species", "__value": "Fire", "__tile": null, "defUid": 70, "realEditorValues": [{
 									"id": "V_String",
 									"params": ["Fire"]
-								}] }
+								}] },
+								{ "__identifier": "Repeat", "__type": "Float", "__value": 40, "__tile": null, "defUid": 72, "realEditorValues": [{ "id": "V_Float", "params": [40] }] }
 							],
 							"__worldX": 88,
 							"__worldY": 248
@@ -1633,7 +1672,7 @@
 					"entityInstances": [
 						{
 							"__identifier": "Start",
-							"__grid": [6,2],
+							"__grid": [5,2],
 							"__pivot": [0.5,0.5],
 							"__tags": [],
 							"__tile": { "tilesetUid": 58, "x": 0, "y": 0, "w": 16, "h": 16 },
@@ -1642,9 +1681,9 @@
 							"width": 16,
 							"height": 16,
 							"defUid": 57,
-							"px": [104,40],
+							"px": [88,40],
 							"fieldInstances": [],
-							"__worldX": 104,
+							"__worldX": 88,
 							"__worldY": 72
 						}
 					]

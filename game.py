@@ -41,6 +41,61 @@ class Player(arcade.Sprite):
 
         return super().on_update(delta_time)
 
+
+class Monster(arcade.Sprite):
+    def __init__(self, species:arcadeLDtk.EnumValue, *, center_x:float, center_y:float, path:list[tuple[float, float]], speed:float=10):
+        super().__init__(species.tile, center_x=center_x, center_y=center_y)
+        self.path = path
+        self.next_index = 0
+        self.speed = speed
+        self.next_point()
+    
+    def next_point(self):
+        self.start = (self.center_x, self.center_y)
+        self.end = self.path[self.next_index]
+        self.next_index = (self.next_index + 1) % len(self.path)
+        self.dist = arcade.math.get_distance(*self.start, *self.end)
+        self.temps = 0
+        self.duree = self.dist / self.speed
+
+    def on_update(self, delta_time: float = 1 / 60) -> None:
+        self.temps += delta_time
+        if self.temps >= self.duree:
+            self.next_point()
+        x, y = arcade.math.lerp_2d(self.start, self.end, self.temps/self.duree)
+        self.center_x = x
+        self.center_y = y
+        return super().on_update(delta_time)
+
+
+class Invocator(arcade.Sprite):
+    desc: arcadeLDtk.EntityInstance
+    time: float
+    path: list[tuple[float, float]]
+    scene: arcade.Scene
+
+    def __init__(self, scene:arcade.Scene, entity:arcadeLDtk.EntityInstance):
+        self.desc = entity
+        self.path = entity.fields["Patrol"].value
+        self.repeat = entity.fields["Repeat"].value
+        self.time = self.repeat
+        species_type = entity.fields["Specie"].type[len("LocalEnum")+1:]
+        enum_type = entity.defs.enums[species_type].values
+        self.species = enum_type[entity.fields["Specie"].value]
+
+        self.scene = scene
+
+        super().__init__(entity.def_.tile, center_x=entity.px[0], center_y=entity.px[1])
+
+
+    def on_update(self, delta_time: float = 1 / 60) -> None:
+        self.time += delta_time
+        if self.time > self.repeat:
+            self.scene.add_sprite("Monster", Monster(self.species, center_x=self.center_x, center_y=self.center_y, path=self.path))
+            self.time -= self.repeat
+        return super().on_update(delta_time)
+
+
 class Game(arcade.View):
     window: arcade.Window
     world: arcadeLDtk.LDtk
@@ -66,10 +121,13 @@ class Game(arcade.View):
         self.start_level(start_level, start.px)
 
     def camera_to_player(self):
-        self.camera.left = max(0, self.player.center_x - WIDTH / 2)
-        self.camera.right = min(self.cur_level.width, self.camera.right)
-        self.camera.bottom = max(0, self.player.center_y - HEIGHT / 2)
-        self.camera.top = min(self.cur_level.height, self.camera.top)
+        self.camera.left = max(0, self.player.center_x - self.camera.viewport_width / (2 * ZOOM))
+        if self.camera.right > self.cur_level.width:
+            self.camera.right = self.cur_level.width
+            
+        self.camera.bottom = max(0, self.player.center_y - self.camera.viewport_height / (2 * ZOOM))
+        if self.camera.top > self.cur_level.height:
+            self.camera.top = self.cur_level.height
 
 
     def start_level(self, start_level:arcadeLDtk.Level, pos:tuple[float, float]):
@@ -78,8 +136,7 @@ class Game(arcade.View):
         self.cur_scene.add_sprite_list("Invocation")
         self.cur_scene.add_sprite_list("Monster")
         for entity in self.cur_level.layers_by_identifier["Invocations"].entity_list:
-            self.cur_scene.add_sprite("Invocation", arcade.Sprite(entity.def_.tile, center_x=entity.px[0], center_y=entity.px[1]))
-            print(entity.px, self.cur_scene["Invocation"], len(self.cur_scene["Invocation"]))
+            self.cur_scene.add_sprite("Invocation", Invocator(self.cur_scene, entity))
         arcade.set_background_color(self.cur_level.bg_color)
         self.cur_scene.add_sprite("Player", self.player)
         self.player.center_x = pos[0]
